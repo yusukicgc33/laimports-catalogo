@@ -4,9 +4,13 @@
     padding: 0;
 }
 :root{
-    --color-1: #5F5F5F;
+    --color-1: #a3a3a3;
     --color-2: #000;
+    --color-3: #FFD800;
     --borderR-1: 10px;
+    --max-width-1: 1200px;
+    --card-inner-width-1: 170px;
+    --card-inner-width-2: 220px;
 }
 
 a:visited,
@@ -116,7 +120,7 @@ header nav .nav-menu .menu a{
 /* banner INICIO
 */
 header .banner{
-    max-width: 1200px;
+    max-width: var(--max-width-1);
     margin: 15px auto;
 }
 header .banner > img{
@@ -130,11 +134,105 @@ header .banner > img{
 /* main-cards INÍCIO
 */
 .main-cards{
-    max-width: 1200px;
+    max-width: var(--max-width-1);
     margin: 0 auto;
 }
-.main-cards > h2{
-    font-size: 1.5em;
+.main-cards h2{
+    margin: 30px auto;
+    font-size: 1.2em;
 }
 /* main-cards FIM
+*/
+/* cards INÍCIO
+*/
+.cards{
+    max-width: var(--max-width-1);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+}
+.card {
+    width: 200px;
+    height: 300px;
+    background-color: var(--color-1);
+    margin: 7px auto;
+}
+.card .camisa {
+    width: var(--card-inner-width-1);
+    height: 170px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+.card .camisa > img{
+    height: 170px;
+}
+.card .info{
+    width: var(--card-inner-width-1);
+    margin: 0 auto;
+}
+.card .info > .titulo{
+    font-size: 1.125em;
+    font-weight: 600;
+}
+.card .info > .desc{
+    font-size: 0.875em;
+    font-weight: 100;
+}
+.card .info > .custo{
+    margin: 7px 0;
+    text-align: center;
+    font-size: 1.5625em;
+}
+.card .info button[class='add']{
+    background-color: var(--color-3);
+    width: var(--card-inner-width-1);
+    height: 20px;
+    margin: 0px autp;
+    border: none;
+    font-size: 0.75em;
+}
+
+/* cards-best-sellers INICIO
+*/
+.best-sellers .title{
+    text-align: center;
+    margin: 20px;
+    font-size: 1.4em;
+}
+.best-sellers .cards{
+    justify-content: center;
+}
+.best-sellers .card{
+    margin: 0 10px;
+    width: 260px;
+    height: 390px;
+}
+.best-sellers .card .camisa{
+    width: var(--card-inner-width-2);
+    height: 220px;
+}
+.best-sellers .card .camisa > img{
+    height: 220px;
+}
+.best-sellers .card .info{
+    width: var(--card-inner-width-2);
+}
+.best-sellers .card .info > .titulo{
+    font-size: 1.5em;
+}
+.best-sellers .card .info > .desc{
+    font-size: 1em;
+}
+.best-sellers .card .info > .custo{
+    font-size: 2em;
+}
+.best-sellers .card .info button[class='add']{
+    width: var(--card-inner-width-2);
+    height: 30px;
+    font-size: 1em;
+}
+/* cards-best-sellers FIM
+*/
+/* cards FIM
 */
