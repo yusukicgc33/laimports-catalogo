@@ -30,6 +30,7 @@ header nav .nav-search{
     width: 100vw;
     display: flex;
     align-items: center;
+    min-width: 350px;
 }
 header nav .nav-search section[class='logo-sec'],
 header nav .nav-search .client-cart{
@@ -147,7 +148,7 @@ header nav .nav-menu .menu a{
     max-width: var(--max-width-1);
     margin: 0 auto;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
 }
 .card {
     width: 200px;

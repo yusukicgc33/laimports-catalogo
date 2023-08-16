@@ -1,0 +1,15 @@
+@media screen and (max-width: 640px) {
+    header nav .nav-search{
+        flex-direction: row;
+    }
+    header nav .nav-search .search-bar{
+        margin: 0 auto;
+        padding: 10px 0;
+        width: 90%;
+    }
+    header nav .nav-search section[class='logo-sec'],
+    header nav .nav-search .client-cart,
+    header nav .nav-menu{
+        display: none;
+    }
+}
