@@ -110,3 +110,31 @@ header nav .nav-menu .menu a{
 }
 /*  nav-menu FIM
 */
+
+
+
+/* banner INICIO
+*/
+header .banner{
+    max-width: 1200px;
+    margin: 15px auto;
+}
+header .banner > img{
+    width: 100%;
+}
+/* banner FIM
+*/
+
+
+
+/* main-cards INÍCIO
+*/
+.main-cards{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.main-cards > h2{
+    font-size: 1.5em;
+}
+/* main-cards FIM
+*/
