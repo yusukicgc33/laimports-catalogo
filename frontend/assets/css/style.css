@@ -6,6 +6,7 @@
 :root{
     --color-1: #5F5F5F;
     --color-2: #000;
+    --borderR-1: 10px;
 }
 
 a:visited,
@@ -16,15 +17,74 @@ a{
     color: #000;
 }
 
+body{
+    font-size: 1.25em;
+}
 
 header{
     width: 100vw;
 }
+
+
+/*  nav-search INICIO
+*/
 header nav .nav-search{
     background-color: var(--color-1);
     width: 100vw;
-    height: 60px;
+    display: flex;
+    align-items: center;
 }
+header nav .nav-search section[class='logo-sec'],
+header nav .nav-search .client-cart{
+    width: 25%;
+    margin: 3px;
+}
+header nav .nav-search section[class='logo-sec'] .logo{
+    margin-left: 10%;
+}
+
+header nav .nav-search .search-bar{
+    width: 50%;
+}
+header nav .nav-search #search{
+    border: none;
+    border-radius: var(--borderR-1);
+    max-width: 570px;
+}
+header nav .nav-search #search::placeholder{
+    color: var(--color-1);
+    font-size: 1.25em;
+    text-indent: 20px;
+}
+.search-container{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    max-width: 570px;
+    margin: 0 auto;
+}
+header nav .nav-search .search-magnifier{
+    z-index: 100;
+    position: absolute;
+    right: 20px;
+    top: 5px;
+}
+header nav .nav-search .search-magnifier:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+header nav .nav-search .search-bar #search{
+    width: 100%;
+    height: 40px;
+}
+
+header nav .nav-search .client-cart .icons{
+    float: right;
+    margin-right: 10%;
+}
+/*  nav-search FIM
+*/
+
 
 
 /*  nav-menu INICIO
