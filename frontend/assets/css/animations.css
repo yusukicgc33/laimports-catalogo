@@ -1,0 +1,50 @@
+@import url(./root-var.css);
+
+/*  nav-search INICIO
+*/
+header nav .nav-search .search-magnifier:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+header nav .nav-search #search:focus{
+    box-shadow: 2px 2px 1px 1px var(--color-3);
+}
+/*  nav-search FIM
+*/
+
+
+
+/*  nav-menu INICIO
+*/
+header nav .nav-menu .menu li:hover,
+header nav .nav-menu .menu a:hover{
+    color: var(--color-3);
+    transform: scale(1.030);
+    border-bottom: 1px solid var(--color-3);
+}
+/*  nav-menu FIM
+*/
+
+
+
+/* banner
+*/
+/* banner
+*/
+
+
+
+/* cards INICIO
+*/
+.card .info button[class='add']:hover{
+    color: #fff;
+    transform: scale(1.025);
+}
+.card .info button[class='add']{
+    border-radius: var(--borderR-1);
+}
+.card .info > .titulo a:hover{
+    color: var(--color-3);
+}
+/* cards FIM
+*/
