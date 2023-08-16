@@ -152,7 +152,8 @@ header nav .nav-menu .menu a{
 }
 .card {
     width: 200px;
-    height: 300px;
+    height: 100%;
+    padding: 10px;
     background-color: var(--color-1);
     margin: 7px auto;
 }
@@ -190,7 +191,7 @@ header nav .nav-menu .menu a{
     background-color: var(--color-3);
     width: var(--card-inner-width-1);
     height: 20px;
-    margin: 0px autp;
+    margin: 0px auto;
     border: none;
     font-size: 0.75em;
     cursor: pointer;
@@ -207,7 +208,7 @@ header nav .nav-menu .menu a{
     justify-content: center;
 }
 .best-sellers .card{
-    margin: 0 10px;
+    margin: 7px 10px;
     width: 260px;
     height: 390px;
 }
