@@ -27,7 +27,7 @@ export const production: Knex.Config = {
        host: process.env.DBHOST,
        port: Number(process.env.DBPORT),
        database: process.env.DBNAME,
-       userName: process.env.DBUSERNAME,
+       user: process.env.DBUSERNAME,
        password: process.env.DBPASSWORD,
     },
     migrations: {
