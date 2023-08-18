@@ -6,7 +6,10 @@ import 'dotenv/config';
 const server = express();
 
 server.use(cors({
-    origin: 'http://127.0.0.1:5500',
+    origin: [
+        'http://127.0.0.1:5500',
+        'https://laimports-catalogo.onrender.com'
+    ],
     methods: [
         'GET',
         'POST',
