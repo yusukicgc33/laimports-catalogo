@@ -35,11 +35,5 @@ export const production: Knex.Config = {
     },
     seeds: {
         directory: path.resolve(__dirname, '..', 'seeds'),
-    },
-    pool: {
-        afterCreate: (connection: any, done: Function) => {
-            connection.run('PRAGMA foreign_keys = ON');
-            done()
-        }
     }
 }
