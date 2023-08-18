@@ -21,7 +21,7 @@ export const development: Knex.Config = {
     }
 }
 export const production: Knex.Config = {
-    client: 'postgrees',
+    client: 'pg',
     useNullAsDefault: true,
     connection: {
        host: process.env.DBHOST,
