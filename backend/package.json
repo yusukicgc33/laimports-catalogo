@@ -6,9 +6,9 @@
   "scripts": {
     "start": "node ./build/index.js",
     "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
-    "build": "yarn tsc",
+    "build": "yarn install",
     "production": "nonde ./build/index.js",
-    "postinstall": "tsc (NÂO PRECISA)",
+    "postinstall": "tsc",
     "knex:rollback-all": "knex --knexfile ./src/server/database/knex/Enviroments.ts migrate:rollback --all",
     "knex:rollback": "knex --knexfile ./src/server/database/knex/Enviroments.ts migrate:rollback",
     "knex:migrate": "knex --knexfile ./src/server/database/knex/Enviroments.ts migrate:latest",
