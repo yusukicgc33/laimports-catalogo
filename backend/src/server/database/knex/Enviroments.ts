@@ -21,5 +21,12 @@ export const development: Knex.Config = {
     }
 }
 export const production: Knex.Config = {
-    ...development //Temporário
+    ...development, //Temporário
+    connection: {
+       host: process.env.DBHOST,
+       port: Number(process.env.DBPORT),
+       database: process.env.DBNAME,
+       userName: process.env.DBUSERNAME,
+       password: process.env.DBPASSWORD,
+    }
 }
