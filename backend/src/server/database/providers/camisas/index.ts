@@ -4,10 +4,10 @@ import * as getById from './GetById'
 import * as getAll from './GetAll'
 import * as updateById from './UpdateById'
 
-export const CamisasController = {
+export const CamisasProvider = {
     ...create,
     ...deleteById,
     ...getById,
     ...getAll,
-    ...updateById
-};
+    ...updateById,
+}
