@@ -1,5 +1,5 @@
-const create = fetch('https://localhost:5555/nova-camisa', {
-    method: 'POST',
+const data = fetch('http://localhost:5555/camisa', {
+    method: 'GET',
 })
 .then(res => {return res.json()})
-.then(res => console.log)
+.then(res => console.log(res))
