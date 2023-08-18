@@ -1,4 +1,4 @@
-const data = fetch('http://localhost:5555/camisa', {
+const data = fetch('https://api-laimports-catalogo.onrender.com/camisa', {
     method: 'GET',
 })
 .then(res => {return res.json()})
