@@ -23,6 +23,7 @@ server.use(cors({
         'DELETE'
     ]
 }))
+server.use(express.static(path.resolve(__dirname, 'views'))) //DEIXANDO A PASTA VIEWS PUBLICA || Falha de sugurança
 server.use(express.json())
 server.use(bodyParser.urlencoded({extended: true}))
 server.use(routes)
