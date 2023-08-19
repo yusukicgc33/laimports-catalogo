@@ -1,0 +1,62 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+a,
+a:link,
+a:visited,
+a:active {
+    color: #000;
+    text-decoration: none;
+}
+
+.container{
+
+}
+
+.floating-button{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 35px;
+    height: 35px;
+    background-color: red;
+    z-index: 100;
+}
+
+.side-bar{
+    display: none;
+    border: 1px solid red;
+    width: 150px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.side-bar nav{
+    margin-left: 10%;
+    margin-top: 100px;
+}
+.side-bar nav ul{
+    list-style-type: none;
+}
+.side-bar nav ul li{
+    margin-top: 10px;
+}
+.side-bar nav ul li a:hover{
+    color: red;
+}
+
+.floating-button:hover{
+    cursor: pointer;
+}
+
+
+
+.main-content{
+    display: block;
+    border: 1px solid red;
+    width: 100vw;
+    position: relative;
+}
