@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
 
 export const home = async (req: Request, res: Response) => {
-    res.render('index')
+    res.render('index.ejs')
 }
