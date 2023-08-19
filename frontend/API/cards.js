@@ -58,8 +58,8 @@ const createCard = (
 }
 
 const generateCardsBySection = (data) => {
-    console.log(data);
-    if(data.errors || data.result === []) {
+    console.log();
+    if(data.errors || Object.values(data.result).length === 0) {
         campBrasil.children[1].innerHTML = `<h1>SEM CAMISAS REGISTRADAS</h1>`
         selInter.children[1].innerHTML = `<h1>SEM CAMISAS REGISTRADAS</h1>`
     }
@@ -108,7 +108,7 @@ const generateCardsBySection = (data) => {
 const getCards = async (filter = '') => {
     if (filter) filter = '&filter=' + filter //Já existem um ?limit=99999
 
-    const data = await fetch(urlProd + `${filter}`, { //MUDAR urlDev PARA urlProd QUANDO FIZER O PUSH
+    const data = await fetch(urlDev + `${filter}`, { //MUDAR urlDev PARA urlProd QUANDO FIZER O PUSH
         method: 'GET',
     })
         .then(res => { return res.json() })
