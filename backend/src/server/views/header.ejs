@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link rel="stylesheet" href="./css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <section class="container">
+        <section class="floating-button"></section>
+        <section class="side-bar">
+            <nav>
+                <ul>
+                    <li><a href="/gerenciar">DASHBOARD</a></li>
+                    <li><a href="/gerenciar/camisa">CAMISAS</a></li>
+                </ul>
+            </nav>
+        </section>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        a,
+        a:link,
+        a:visited,
+        a:active {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .container{
+
+        }
+
+        .floating-button{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 35px;
+            height: 35px;
+            background-color: red;
+            z-index: 100;
+        }
+
+        .side-bar{
+            display: none;
+            border: 1px solid red;
+            width: 150px;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .side-bar nav{
+            margin-left: 10%;
+            margin-top: 100px;
+        }
+        .side-bar nav ul{
+            list-style-type: none;
+        }
+        .side-bar nav ul li{
+            margin-top: 10px;
+        }
+        .side-bar nav ul li a:hover{
+            color: red;
+        }
+
+        .floating-button:hover{
+            cursor: pointer;
+        }
+
+
+
+        .main-content{
+            display: block;
+            border: 1px solid red;
+            width: 100vw;
+            position: relative;
+        }
+    </style>
+    <script>
+        const floatingButton = document.querySelector('.floating-button')
+        const sideBar = document.querySelector('.side-bar')
+        const display = ['block', 'none']
+
+        let dCount = 0
+        function changeDisplay (element) {
+            element.style.display = display[dCount]
+            dCount++
+            if(dCount > 1) dCount = 0
+        }
+        document.addEventListener('click', (e) => {
+            console.log(e.target.className);
+            if(e.target.className === 'floating-button') changeDisplay(sideBar)
+            if(e.target.className !== 'floating-button') {
+                dCount = 1
+                changeDisplay(sideBar)
+            }
+        })
+    </script>

@@ -1,7 +1,10 @@
 import { routes } from './routes';
 import express from 'express';
 import cors from 'cors';
+import path from 'path'
+import ejs from 'ejs';
 import 'dotenv/config';
+import bodyParser from 'body-parser'
 
 let originURL = 'http://127.0.0.1:5500'
 
@@ -21,6 +24,10 @@ server.use(cors({
     ]
 }))
 server.use(express.json())
+server.use(bodyParser.urlencoded({extended: true}))
 server.use(routes)
+
+server.set('view engine', 'ejs');
+server.set('views', path.resolve(__dirname, 'views'));
 
 export { server };
