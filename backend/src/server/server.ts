@@ -29,6 +29,6 @@ server.use(bodyParser.urlencoded({extended: true}))
 server.use(routes)
 
 server.set('view engine', 'ejs');
-server.set('views', './src/server/views');
+server.set('views', './src/server/views'); //path.resolve e join não funcionaram || Só funcionou no render e localhost com o camonho manual
 
 export { server };
