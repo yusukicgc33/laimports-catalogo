@@ -29,6 +29,6 @@ server.use(bodyParser.urlencoded({extended: true}))
 server.use(routes)
 
 server.set('view engine', 'ejs');
-server.set('views', path.join(__dirname + './views'));
+server.set('views', path.join(__dirname + '/views'));
 
 export { server };
