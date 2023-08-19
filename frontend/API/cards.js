@@ -59,7 +59,7 @@ const createCard = (
 
 const generateCardsBySection = (data) => {
     console.log(data);
-    if(data.errors) {
+    if(data.errors || data.result === []) {
         campBrasil.children[1].innerHTML = `<h1>SEM CAMISAS REGISTRADAS</h1>`
         selInter.children[1].innerHTML = `<h1>SEM CAMISAS REGISTRADAS</h1>`
     }
