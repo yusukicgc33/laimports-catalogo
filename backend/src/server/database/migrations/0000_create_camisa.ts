@@ -9,7 +9,7 @@ export async function up(knex: Knex) {
             table.string('selecao').index().unique().notNullable;
             table.string('descricao').notNullable;
             table.string('custo').notNullable;
-            table.string('imagem').notNullable;
+            table.text('imagem').notNullable;
         })
         .then(() => {
             console.log(`[# Server] Tabela camisa criada`)
