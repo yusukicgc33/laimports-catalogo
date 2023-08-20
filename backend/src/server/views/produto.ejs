@@ -1,9 +1,84 @@
 <%- include('header') %>
 <link rel="stylesheet" href="../css/style.css">
 
+<link rel="stylesheet" href="../css/produto.css">
 <main class="main-content">
-    <h1>Camisa</h1>
+    <h1 style="text-align: center; margin-top: 20px;">Gerenciar Camisas</h1>
+
+    <section class="form" style="margin: 30px 0;">
+        <form action="">
+            PESQUISAR: <input value="" type="search" name="filter" id="filter" autofocus>
+            LIMITE: <input value="" type="text" name="limit" id="limit">
+            PAGINA: <input value="" type="text" name="page" id="page">
+            <button type="submit">FILTRAR</button>
+            <a href="/gerenciar/camisa"><button type="button">LIMPAR</button></a>
+            <button class="bnt-novo" type="button">[+] NOVO</button>
+        </form>
+    </section>
+
+    <% let trClass = ''%>
+    <table>
+        <tr>
+            <thead>
+                <th>ID</th>
+                <th>LIGA</th>
+                <th>SELEÇÃO</th>
+                <th>DESCRIÇÃO</th>
+                <th>CUSTO</th>
+                <th>IMAGEM</th>
+                <th>AÇÕES</th>
+            </thead>
+        </tr>
+        
+        <tbody>
+            <% for(let i = 0; i < cards[0].length; i++){%>
+                <% if ( cards[0][i].id % 2 > 0 ){%>
+                    <% trClass = '' %>
+                <% }%>
+                <% if(cards[0][i].id){ %>
+                    <tr <%= `class = ${trClass}`%> >
+                        <td class="id"><%= cards[0][i].id %></td>
+                        <td class="liga"><%= cards[0][i].liga %></td>
+                        <td class="sel"><%= cards[0][i].selecao %></td>
+                        <td class="desc"><%= cards[0][i].descricao %></td>
+                        <td class="custo"><%= cards[0][i].custo %></td>
+                        <td class="img">
+                            <button class="visualizarImg" onclick="visualizarImg(<%= cards[0][i].id%>)">VIZUALIZAR</button>
+                            <button class="download" onclick="baixarImg(<%= cards[0][i].id%>)">BAIXAR</button>
+                        </td>
+                        <td class="acoes">
+                            <button class="editar" onclick="editCamisa(<%= cards[0][i].id %>)">EDITAR</button>
+                            <button class="apagar" onclick="delCamisa(<%= cards[0][i].id %>)">APAGAR</button>
+                        </td>
+                    </tr>
+                <% }%>
+            <% }%>
+        </tbody>  
+    
+    </table>
 </main>
 
+<section class="modal-container">
+    <section class="modal">
+        <form action="", method="">
+            <h2>CRIAR NOVA CAMISA</h2>
+            <div class="bntClose"></div>
+            <input required type="file" name="imagem" id="imagem">
+            <input required type="text" name="liga" id="liga" placeholder="LIGA">
+            <input required type="text" name="selecao" id="selecao" placeholder="SELEÇÃO">
+            <input required type="text" name="descricao" id="descricao" placeholder="DESCRIÇÃO">
+            <input required type="text" name="custo" id="custo" placeholder="CUSTO (R$000,00)">
+            <section class="bnts">
+                <button type="reset">LIMPAR CAMPOS</button>
+                <button class="bntCreateProduct" type="button">CRIAR CAMISA</button>
+            </section>
+        </form>
+    </section>
+</section>
+
+<section class="visualizarImg-modal"></section>
+
 <script src="../js/script.js"></script>
+<script src="../js/produto.js"></script>
+<script src="../js/produto-create.js"></script>
 <%- include('footer') %>

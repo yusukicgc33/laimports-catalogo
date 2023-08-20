@@ -1,0 +1,134 @@
+:root{
+
+}
+
+.impar{
+    background-color: gray;
+}
+
+
+.form{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.bnt-novo{
+    background-color: green;
+    color: #fff;
+    font-weight: 700;
+    margin-left: 20px;
+    border: none;
+    width: 70px;
+    height: 25px;
+}
+.form button:hover{
+    cursor: pointer;
+}
+
+table{
+    width: 90vw;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+table button{
+    height: 100%;
+    cursor: pointer;
+    border: 1px solid #000;
+}
+table button{
+    width: 100px;
+}
+th{
+    border: 1px solid #000;
+}
+
+tr{
+    vertical-align: center;
+}
+tr:hover{
+    background-color: #0ff;
+}
+td {
+    text-align: center;
+}
+
+.acoes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.acoes:hover{
+    background-color: #fff;
+}
+.editar, .apagar{
+    width: 48%;
+}
+.editar{
+    background-color: green;
+    border: 1px solid green;
+}
+.apagar{
+    background-color: red;
+    border: 1px solid red;
+}
+
+
+.modal-container{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 98;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.modal-container .modal{
+    width: 400px;
+}
+.modal-container .modal form{
+    padding: 30px;
+    background-color: #000;
+    color: #fff;
+    position: relative;
+}
+.modal-container .modal form h2{
+    text-align: center;
+    margin: 5px 0 20px 0;
+    color: #fff;
+}
+.modal-container .modal input{
+    width: 100%;
+    height: 30px;
+    margin: 10px 0;
+    border: none;
+}
+.modal-container .modal input:focus{
+    box-shadow: 0;
+    outline: none;
+}
+.modal-container .modal .bnts{
+    width: 100%;
+    margin: 15px 0;
+}
+.modal-container .modal .bnts button[type='reset'],
+.modal-container .modal .bnts button[type='button']{
+    width: 49.3%;
+    height: 30px;
+}
+.modal-container .modal .bnts button:hover,
+.modal-container .modal input[type='file']{
+    cursor: pointer;
+}
+.modal-container .modal form .bntClose{
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+}
