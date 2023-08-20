@@ -1,7 +1,7 @@
 const bntCreateProduct = document.querySelector('.bntCreateProduct')
 bntCreateProduct.addEventListener('click', encodeBase64CreateCamisa)
 
-const createCamisa = (src) => {
+const createCamisa = async (src) => {
     let imagem = src
     const liga = document.getElementById('liga').value
     const sel = document.getElementById('selecao').value
@@ -16,7 +16,7 @@ const createCamisa = (src) => {
         imagem !== 'sem imagem'
         ){
         console.log(liga, sel, desc, cust, imagem);
-        fetch('/camisa', {
+        await fetch('/camisa', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
