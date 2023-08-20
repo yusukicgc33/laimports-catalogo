@@ -10,6 +10,9 @@ const startServer = () => {
 }
 
 if(process.env.ENVIROMENT === 'production' && process.env.IS_LOCAL_HOST !== 'true'){
+    Knex.destroy()
+    .then(() => {console.log('Destroy Done')})
+    
     Knex.migrate
         .latest()
         .then(() => {
