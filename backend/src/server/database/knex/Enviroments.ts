@@ -1,25 +1,6 @@
 import { Knex } from "knex";
 import path from 'path';
 
-
-export const production: Knex.Config = {
-    client: 'pg',
-    useNullAsDefault: true,
-    connection: {
-       host: process.env.DBHOST,
-       port: Number(process.env.DBPORT),
-       database: process.env.DBNAME,
-       user: process.env.DBUSERNAME,
-       password: process.env.DBPASSWORD,
-    },
-    migrations: {
-        directory: path.resolve(__dirname, '..', 'migrations'),
-    },
-    seeds: {
-        directory: path.resolve(__dirname, '..', 'seeds'),
-    }
-}
-
 export const development: Knex.Config = {
     client: 'sqlite3',
     useNullAsDefault: true,
@@ -37,5 +18,22 @@ export const development: Knex.Config = {
             connection.run('PRAGMA foreign_keys = ON');
             done()
         }
+    }
+}
+export const production: Knex.Config = {
+    client: 'pg',
+    useNullAsDefault: true,
+    connection: {
+       host: process.env.DBHOST,
+       port: Number(process.env.DBPORT),
+       database: process.env.DBNAME,
+       user: process.env.DBUSERNAME,
+       password: process.env.DBPASSWORD,
+    },
+    migrations: {
+        directory: path.resolve(__dirname, '..', 'migrations'),
+    },
+    seeds: {
+        directory: path.resolve(__dirname, '..', 'seeds'),
     }
 }
