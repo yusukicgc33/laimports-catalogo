@@ -5,10 +5,10 @@ export async function up(knex: Knex) {
         .schema
         .createTable('camisa', table => {
             table.bigIncrements('id').primary().index();
-            table.string('liga', 50).index().notNullable;
-            table.string('selecao', 50).index().unique().notNullable;
-            table.string('descricao', 50).notNullable;
-            table.string('custo', 50).notNullable;
+            table.string('liga').index().notNullable;
+            table.string('selecao').index().unique().notNullable;
+            table.string('descricao').notNullable;
+            table.string('custo').notNullable;
             table.string('imagem').notNullable;
         })
         .then(() => {
