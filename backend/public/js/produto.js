@@ -40,30 +40,45 @@ document.addEventListener('click', (e) => {
     }
 })
 
-function visualizarImg(id){
+async function visualizarImg(id) {
     const imgVisu = document.querySelector('.visualizarImg-modal')
-    fetch(`/camisa/${id}`, {
+    const display2 = ['flex', 'none']
+    let dCount4 = 0
+    function changeDisplay2(element) {
+        element.style.display = display2[dCount4]
+        dCount4++
+        if (dCount4 > 1) dCount4 = 0
+    }
+
+    document.addEventListener('click', (e) => {
+        if (
+            e.target.className === 'bntCloseImg' ||
+            e.target.className === 'visualizarImg'
+        ) {
+            changeDisplay2(imgVisu)
+        }
+    })
+    await fetch(`/camisa/${id}`, {
         method: 'GET',
     })
-    .then(res => {return res.json()})
-    .then(res => {
-        const imgee = String(res.result.imagem).replace(/^data:image\/[a-z]+;base64./, "").trim()
-        let imgEl = document.createElement('img')
-        imgEl.src= `data:image/png;base64,${imgee}`.trim()
-        imgVisu.appendChild(imgEl)
-    })   
+        .then(res => { return res.json() })
+        .then(res => {
+            const imgee = String(res.result.imagem).replace(/^data:image\/[a-z]+;base64./, "").trim()
+            imgVisu.children[0].children[0]
+                .src = `data:image/png;base64,${imgee}`.trim()
+        })
 }
 
-function baixarImg(id){
+function baixarImg(id) {
     fetch(`/camisa/${id}`, {
         method: 'GET',
     })
-    .then(res => {return res.json()})
-    .then(res => {
-        const imgee = String(res.result.imagem).replace(/^data:image\/[a-z]+;base64./, "")
-        let a = document.createElement('a')
-        a.href= `data:image/png;base64,${imgee}`
-        a.download = `imagem-${res.result.selecao}_${id}.png`
-        a.click()
-    }) 
+        .then(res => { return res.json() })
+        .then(res => {
+            const imgee = String(res.result.imagem).replace(/^data:image\/[a-z]+;base64./, "")
+            let a = document.createElement('a')
+            a.href = `data:image/png;base64,${imgee}`
+            a.download = `img-${res.result.liga}_${res.result.selecao}_${id}_${Date.now()}.png`
+            a.click()
+        })
 }

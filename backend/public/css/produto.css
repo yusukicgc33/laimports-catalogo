@@ -74,17 +74,33 @@ td {
 }
 
 
-.modal-container{
+.modal-container,
+.visualizarImg-modal{
     display: none;
     justify-content: center;
     align-items: center;
-    z-index: 98;
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.6);
+}
+.modal-container{
+    z-index: 98;
+}
+.visualizarImg-modal{
+    z-index: 97;
+}
+.visualizarImg-modal img,
+.visualizarImg-modal .img{
+    height: 400px;
+    position: relative;
+    max-width: 640px;
+}
+.visualizarImg-modal .bntCloseImg{
+    top: -35px;
+    right: -35px;
 }
 .modal-container .modal{
     width: 400px;
@@ -123,12 +139,15 @@ td {
 .modal-container .modal input[type='file']{
     cursor: pointer;
 }
-.modal-container .modal form .bntClose{
+.modal-container .modal form .bntClose,
+.bntCloseImg{
     width: 30px;
     height: 30px;
     background-color: red;
     position: absolute;
+    cursor: pointer;
+}
+.modal-container .modal form .bntClose{
     top: 15px;
     right: 15px;
-    cursor: pointer;
 }
