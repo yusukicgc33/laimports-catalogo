@@ -73,7 +73,9 @@ const generateCardsBySection = (data) => {
             tituloLinkText = result.selecao,
             descText = result.descricao,
             custoText = result.custo
+        console.log(result.liga);
         if (result.liga === "campeonato brasileiro") {
+            console.log(result.liga);
             if (cBLimit < limit) {
                 campBrasil
                     .children[1] //é uma div da classe cards
@@ -84,11 +86,11 @@ const generateCardsBySection = (data) => {
                         descText,
                         custoText,
                     ))
-                    .innerHTML='<h1>TEste</h1>'
             }
             cBLimit++
         } else {
             if (sILimit < limit) {
+                console.log(result.liga);
                 selInter
                     .children[1] //é uma div da classe cards
                     .appendChild(createCard(
@@ -101,7 +103,7 @@ const generateCardsBySection = (data) => {
             }
             sILimit++
         }
-        console.log('Chamada a API (+1?)');
+        // console.log('Chamada a API (+1?)');
     }
 }
 
