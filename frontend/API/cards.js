@@ -67,15 +67,14 @@ const generateCardsBySection = (data) => {
     let cBLimit = 5 // Quantidade de Cards = limit - cBLimit
     let sILimit = 5
     for (result of res.result) {
+        let resLiga = String(result.liga)
         let
-            imgPath = './public/img/test-camisa-1.png' //result.imagem,
+            imgPath = result.imagem //result.imagem,
             tituloLinkHref = '#',
             tituloLinkText = result.selecao,
             descText = result.descricao,
             custoText = result.custo
-        console.log(result.liga);
-        if (result.liga === "campeonato brasileiro") {
-            console.log(result.liga);
+        if (resLiga.includes("campeonato brasileiro")) {
             if (cBLimit < limit) {
                 campBrasil
                     .children[1] //é uma div da classe cards
@@ -90,7 +89,7 @@ const generateCardsBySection = (data) => {
             cBLimit++
         } else {
             if (sILimit < limit) {
-                console.log(result.liga);
+                console.log('sI');
                 selInter
                     .children[1] //é uma div da classe cards
                     .appendChild(createCard(

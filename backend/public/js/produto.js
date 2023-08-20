@@ -47,9 +47,9 @@ function visualizarImg(id){
     })
     .then(res => {return res.json()})
     .then(res => {
-        const imgee = String(res.result.imagem).replace(/^data:image\/[a-z]+;base64./, "")
+        const imgee = String(res.result.imagem).replace(/^data:image\/[a-z]+;base64./, "").trim()
         let imgEl = document.createElement('img')
-        imgEl.src= `data:image/png;base64,${imgee}`
+        imgEl.src= `data:image/png;base64,${imgee}`.trim()
         imgVisu.appendChild(imgEl)
     })   
 }

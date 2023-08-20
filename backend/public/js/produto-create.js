@@ -53,6 +53,8 @@ function encodeBase64CreateCamisa (){
         fileReader.onload = (fileLoadedEvent) => {
             const src = fileLoadedEvent.target.result; // <--- data: base64
             createCamisa(src)
+            alert(src)
+            console.log(src);
         }
         fileReader.readAsDataURL(file);
     }
