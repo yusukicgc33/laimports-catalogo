@@ -44,13 +44,14 @@
                         <td class="custo"><%= cards[0][i].custo %></td>
                         <td class="img">
                             <button class="visualizarImg" onclick="visualizarImg(<%= cards[0][i].id%>)">VIZUALIZAR</button>
-                            <button class="download" onclick="baixarImg(<%= cards[0][i].id%>)">BAIXAR</button>
+                            <button class="download" onclick="baixarImg(<%= cards[0][i]%>)">BAIXAR</button>
                         </td>
                         <td class="acoes">
                             <button class="editar" onclick="editCamisa(<%= cards[0][i].id %>)">EDITAR</button>
                             <button class="apagar" onclick="delCamisa(<%= cards[0][i].id %>)">APAGAR</button>
                         </td>
                     </tr>
+                    
                 <% }%>
             <% }%>
         </tbody>  
@@ -71,6 +72,22 @@
             <section class="bnts">
                 <button type="reset">LIMPAR CAMPOS</button>
                 <button class="bntCreateProduct" type="button">CRIAR CAMISA</button>
+            </section>
+        </form>
+    </section>
+</section>
+
+<section class="modal-update">
+    <section class="modal">
+        <form action="", method="PUT">
+            <h2>EDITAR CAMISA</h2>
+            <div class="bntCloseUpdate"></div>
+            <!-- \/ COMPONETES INPUTS CRIADOS COM JS pois getElement não funcionou \/ -->
+            <div class="inputs-modal-update"></div>
+            <!-- /\ COMPONETES CRIADOS COM JS pois getElement não funcionou /\ -->
+            <section class="bnts">
+                <button type="reset">LIMPAR CAMPOS</button>
+                <button class="bntUpdateProduct" type="button">ATUALIZAR CAMISA</button>
             </section>
         </form>
     </section>

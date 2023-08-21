@@ -75,7 +75,8 @@ td {
 
 
 .modal-container,
-.visualizarImg-modal{
+.visualizarImg-modal,
+.modal-update{
     display: none;
     justify-content: center;
     align-items: center;
@@ -92,6 +93,9 @@ td {
 .visualizarImg-modal{
     z-index: 97;
 }
+.modal-update{
+    z-index: 96;
+}
 .visualizarImg-modal img,
 .visualizarImg-modal .img{
     height: 400px;
@@ -102,44 +106,55 @@ td {
     top: -35px;
     right: -35px;
 }
-.modal-container .modal{
+.modal-container .modal,
+.modal-update .modal{
     width: 400px;
 }
-.modal-container .modal form{
+.modal-container .modal form,
+.modal-update .modal form{
     padding: 30px;
     background-color: #000;
     color: #fff;
     position: relative;
 }
-.modal-container .modal form h2{
+.modal-container .modal form h2,
+.modal-update .modal form h2{
     text-align: center;
     margin: 5px 0 20px 0;
     color: #fff;
 }
-.modal-container .modal input{
+.modal-container .modal input,
+.modal-update .modal input{
     width: 100%;
     height: 30px;
     margin: 10px 0;
     border: none;
 }
-.modal-container .modal input:focus{
+.modal-container .modal input:focus,
+.modal-update .modal input:focus{
     box-shadow: 0;
     outline: none;
 }
-.modal-container .modal .bnts{
+.modal-container .modal .bnts,
+.modal-update .modal .bnts{
     width: 100%;
     margin: 15px 0;
 }
 .modal-container .modal .bnts button[type='reset'],
-.modal-container .modal .bnts button[type='button']{
+.modal-container .modal .bnts button[type='button'],
+.modal-update .modal .bnts button[type='reset'],
+.modal-update .modal .bnts button[type='button']{
     width: 49.3%;
     height: 30px;
 }
 .modal-container .modal .bnts button:hover,
-.modal-container .modal input[type='file']{
+.modal-container .modal input[type='file'],
+.modal-update .modal .bnts button:hover,
+.modal-update .modal input[type='file']{
     cursor: pointer;
 }
 .modal-container .modal form .bntClose,
+.modal-update .modal form .bntCloseUpdate,
 .bntCloseImg{
     width: 30px;
     height: 30px;
@@ -147,7 +162,8 @@ td {
     position: absolute;
     cursor: pointer;
 }
-.modal-container .modal form .bntClose{
+.modal-container .modal form .bntClose,
+.modal-update .modal form .bntCloseUpdate{
     top: 15px;
     right: 15px;
 }

@@ -15,7 +15,6 @@ const createCamisa = async (src) => {
         cust.length > 0 &&
         imagem !== 'sem imagem'
         ){
-        console.log(liga, sel, desc, cust, imagem);
         await fetch('/camisa', {
             method: 'POST',
             headers: {
@@ -32,12 +31,10 @@ const createCamisa = async (src) => {
         })
         .then(res => {return res.json()})
         .then((res) => {
-            alert('Camisa Registrada')
-            return window.location.reload()
+            setSent(bntCreateProduct, true)
         })
         .catch((e) => {
             alert(e)
-            return window.location.reload()
         })
     }else{
         alert('Preencha todos os campos')
@@ -53,8 +50,6 @@ function encodeBase64CreateCamisa (){
         fileReader.onload = (fileLoadedEvent) => {
             const src = fileLoadedEvent.target.result; // <--- data: base64
             createCamisa(src)
-            alert(src)
-            console.log(src);
         }
         fileReader.readAsDataURL(file);
     }
