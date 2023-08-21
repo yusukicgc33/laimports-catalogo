@@ -79,9 +79,9 @@ async function editCamisa(id) {
 
             let id = res.result.id
 
-            createInput('liga', '20')
-            createInput('selecao', '20')
-            createInput('descricao', '20')
+            createInput('liga', '30')
+            createInput('selecao', '30')
+            createInput('descricao', '30')
             createInput('custo', '20')
 
             document.addEventListener('click', (e) => {

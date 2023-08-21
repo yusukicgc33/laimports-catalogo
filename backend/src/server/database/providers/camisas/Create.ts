@@ -3,6 +3,7 @@ import { Knex } from "../../knex";
 
 export const create = async (camisa: Omit<ICamisa, 'id'>): Promise<number | Error> => {
     try {
+        camisa.liga.toLowerCase()
         const [result] = await Knex('camisa').insert(camisa).returning('id');
         if (typeof result === 'object') {
             return result.id
