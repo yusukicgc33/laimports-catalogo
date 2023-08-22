@@ -103,20 +103,20 @@ const generateCardsBySection = (data) => {
             cBLimit++
         } else {
             if (sILimit < limit) {
-                console.log('sI');
                 selInter
                     .children[1] //é uma div da classe cards
                     .appendChild(createCard(
+                        id,
                         imgPath,
                         tituloLinkHref,
                         tituloLinkText,
                         descText,
                         custoText,
+                        resLiga
                     ))
             }
             sILimit++
         }
-        // console.log('Chamada a API (+1?)');
     }
 }
 
