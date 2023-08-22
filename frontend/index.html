@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/animations.css">
     <link rel="stylesheet" href="./assets/css/mediaqueries.css">
+
+    <link rel="stylesheet" href="./assets/css/style-cart.css">
+    <script src="./assets/js/cart-setup.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LA Imports || Início</title>
@@ -23,15 +26,17 @@
                 </section>
                 <section class="client-cart">
                     <section class="icons">
-                        <img class="client" src="" alt="client">
-                        <img style="height: 50px;" class="cart" src="./public/img/cart.png" alt="cart">
+                        <div class="cartContainer">
+                            <a href="./assets/pages/cart.html"><span class="cartQtd">0</span></a>
+                            <a href="./assets/pages/cart.html"><img style="height: 50px;" class="cart" src="./public/img/cart.png" alt="cart"></a>
+                        </div>
                     </section>
                 </section>
             </section>
             <section class="nav-menu">
                 <section class="menu">
                     <ul>
-                        <li><a href="#">INÍCIO</a></li>
+                        <li><a href="./index.html">INÍCIO</a></li>
                         <li><a href="#">CAMISAS</a></li>
                         <li><a href="#">CONTATO</a></li>
                         <li><a href="#">TROCAS E DEVOLUÇÕES</a></li>
@@ -46,7 +51,7 @@
     <main class="main-cards">
         
         <section id="camp-brasil">
-            <h2>CAMPEONADO BRASILEIRO</h2>
+            <h2>CAMPEONATO BRASILEIRO</h2>
             <div class="cards"></div>            
         </section>
         <section id="sel-inter">
@@ -82,5 +87,15 @@
         </div>
     </section>
     <script src="./API/cards.js"></script>
+    <script>
+        const setCartQtd = () => {
+            if(JSON.parse(sessionStorage.getItem('itemsList'))){
+                let itemsListQtd = JSON.parse(sessionStorage.getItem('itemsList')).length
+                let cartQtd = document.querySelector('.cartQtd')
+                cartQtd.innerHTML = itemsListQtd
+            }
+        }
+        setCartQtd()
+    </script>
 </body>
 </html> 

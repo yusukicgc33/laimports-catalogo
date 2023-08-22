@@ -6,11 +6,13 @@ const urlProd = 'https://api-laimports-catalogo.onrender.com/camisa?limit=99999'
 const urlDev = 'http://localhost:5555/camisa?limit=99999'
 
 const createCard = (
+    id,
     imgPath,
     tituloLinkHref,
     tituloLinkText,
     descText,
     custoText,
+    resLiga
 ) => {
     let card = document.createElement('div')
     card.classList.add('card')
@@ -50,15 +52,24 @@ const createCard = (
     let bnt = document.createElement('button')
     bnt.classList.add('add')
     bnt.innerText = 'ADICIONAR'
+    bnt.addEventListener('click', (e) => {
+        saveToSession(
+            id, 
+            resLiga,
+            tituloLinkText,
+            descText,
+            custoText,
+            imgPath
+            )
+        setCartQtd()
+    })
     info.appendChild(bnt)
-
     card.appendChild(info)
-
     return card
 }
 
 const generateCardsBySection = (data) => {
-    if(data.errors || Object.values(data.result).length === 0) {
+    if (data.errors || Object.values(data.result).length === 0 || data.result < 1) {
         campBrasil.children[1].innerHTML = `<h1>SEM CAMISAS REGISTRADAS</h1>`
         selInter.children[1].innerHTML = `<h1>SEM CAMISAS REGISTRADAS</h1>`
     }
@@ -69,6 +80,7 @@ const generateCardsBySection = (data) => {
     for (result of res.result) {
         let resLiga = String(result.liga)
         let
+            id = result.id,
             imgPath = result.imagem //result.imagem,
             tituloLinkHref = '#',
             tituloLinkText = result.selecao,
@@ -79,11 +91,13 @@ const generateCardsBySection = (data) => {
                 campBrasil
                     .children[1] //é uma div da classe cards
                     .appendChild(createCard(
+                        id,
                         imgPath,
                         tituloLinkHref,
                         tituloLinkText,
                         descText,
                         custoText,
+                        resLiga
                     ))
             }
             cBLimit++
@@ -109,7 +123,7 @@ const generateCardsBySection = (data) => {
 const getCards = async (filter = '') => {
     if (filter) filter = '&filter=' + filter //Já existem um ?limit=99999
 
-    const data = await fetch(urlProd + `${filter}`, { //MUDAR urlDev PARA urlProd QUANDO FIZER O PUSH
+    const data = await fetch(urlProdv + `${filter}`, { //MUDAR urlDev PARA urlProd QUANDO FIZER O PUSH
         method: 'GET',
     })
         .then(res => { return res.json() })

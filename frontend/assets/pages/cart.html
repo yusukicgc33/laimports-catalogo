@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="stylesheet" href="./../css/style.css">
+    <link rel="stylesheet" href="./../css/animations.css">
+    <link rel="stylesheet" href="./../css/mediaqueries.css">
+
+    <link rel="stylesheet" href="../../assets/css/style-cart.css">
+    <script src="../../assets/js/cart-setup.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA Imports || Início</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <section class="nav-search">
+                <section class="logo-sec">
+                    <img class="logo" src="./../../public/img/logo.png" alt="logo">
+                </section>
+                <section class="search-bar">
+                    <section class="search-container">
+                        <img class="search-magnifier" src="./../../public/img/search-magnifier.png" alt="search-magnifier">
+                        <input id="search" type="text" placeholder="Pesquisar Produto...">
+                    </section>
+                </section>
+                <section class="client-cart">
+                    <section class="icons">
+                        <a href="./cart.html"><span class="cartQtd">0</span></a>
+                        <div class="cartContainer">
+                            <a href="./cart.html"><img style="height: 50px;" class="cart" src="./../../public/img/cart.png" alt="cart"></a>
+                        </div>
+                    </section>
+                </section>
+            </section>
+            <section class="nav-menu">
+                <section class="menu">
+                    <ul>
+                        <li><a href="./../../index.html">INÍCIO</a></li>
+                        <li><a href="#">CAMISAS</a></li>
+                        <li><a href="#">CONTATO</a></li>
+                        <li><a href="#">TROCAS E DEVOLUÇÕES</a></li>
+                    </ul>
+                </section>
+            </section>
+        </nav>
+    </header>
+    <main class="items-content">
+        <table class="items">
+            <thead>
+                <td>ID</td>
+                <td>IMAGEM</td>
+                <td>SELEÇÃO</td>
+                <td>DESCRIÇÃO</td>
+                <td>CUSTO</td>
+                <td>UNIDADES</td>
+            </thead>
+            <tbody class="tbody"></tbody>
+        </table>
+        <section class="client-data">
+
+        </section>
+        <section class="purch-info">
+
+        </section>
+    </main>
+    <script>
+        const setCartQtd = () => {
+            if(JSON.parse(sessionStorage.getItem('itemsList'))){
+                let itemsListQtd = JSON.parse(sessionStorage.getItem('itemsList')).length
+                let cartQtd = document.querySelector('.cartQtd')
+                cartQtd.innerHTML = itemsListQtd
+            }
+        }
+        setCartQtd()
+    </script>
+    <script>
+        let itemsSection = document.querySelector('.items')        
+        if(!getFromSession().length < 1) {
+            let itemsList = getFromSession()
+            for(item of itemsList){
+                itemsSection.firstElementChild.appendChild(
+                    createItem(
+                        item.id, 
+                        item.imagem, 
+                        item.selecao, 
+                        item.descricao, 
+                        item.custo
+                    )
+                )
+            }
+        }else{
+            itemsSection.innerHTML = `
+                <div class='semItens'>
+                    <h1>VOCÊ NÃO POSSUE ITENS NO CARRINHO</h1>
+                </div>
+            ` 
+        }
+    </script>
+</body>
+</html> 
