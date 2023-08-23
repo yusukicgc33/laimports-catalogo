@@ -46,22 +46,29 @@
         </nav>
     </header>
     <main class="items-content">
-        <table class="items">
-            <thead>
-                <td>ID</td>
-                <td>IMAGEM</td>
-                <td>SELEÇÃO</td>
-                <td>DESCRIÇÃO</td>
-                <td>CUSTO</td>
-                <td>UNIDADES</td>
-            </thead>
-            <tbody class="tbody"></tbody>
-        </table>
-        <section class="client-data">
-
-        </section>
+        <div class="itemsClientData">
+            <table class="items">
+                <thead>
+                    <td>ID</td>
+                    <td>IMAGEM</td>
+                    <td>SELEÇÃO</td>
+                    <td>DESCRIÇÃO</td>
+                    <td>CUSTO</td>
+                    <td>REMOVER</td>
+                </thead>
+                <tbody class="tbody"></tbody>
+            </table>
+            <section class="client-data"></section>
+        </div>
         <section class="purch-info">
-            
+            <div class="purchBag">
+                <img src="../../public/img/sacola-itens.png" alt="sacola de compras">
+                <h3>Sua Sacola </h3>
+                <h5><span class="bagQtd">0</span> itens</h5>
+                <h4>Total: R$ <span class="custoTotal">R$ 000,00</span></h4>
+                <button type="button" class="bntFinalizarPedido">FINALIZAR PEDIDO</button>
+                <button type="button" class="bntLimparCarrinhoPedido">LIMPAR CARRINHO</button>
+            </div>
         </section>
     </main>
     <script>
@@ -69,33 +76,109 @@
             if(JSON.parse(sessionStorage.getItem('itemsList'))){
                 let itemsListQtd = JSON.parse(sessionStorage.getItem('itemsList')).length
                 let cartQtd = document.querySelector('.cartQtd')
+                let bagQtd = document.querySelector('.bagQtd')
                 cartQtd.innerHTML = itemsListQtd
+                bagQtd.innerHTML = itemsListQtd
             }
         }
         setCartQtd()
     </script>
     <script>
-        let itemsSection = document.querySelector('.items')        
+        function getDate(){
+            let date = new Date()
+            let dDia = date.getDate()
+            let dMes = date.getMonth()
+            let dAnoC = date.getFullYear()
+
+            return `${dDia}/${dMes}/${dAnoC}`
+        }
+        console.log(getDate());
+        function getHora(){
+            let hour = new Date()
+            let hora = hour.getHours()
+            let min = hour.getMinutes()
+            let sec = hour.getSeconds()
+
+            return `${hora}:${min}:${sec}`
+        }
+        console.log(getHora());
+
+        let custoTotal = document.querySelector('.custoTotal')
+        let itemsSection = document.querySelector('.items')    
+        let itemsClientData = document.querySelector('.itemsClientData')    
         if(!getFromSession().length < 1) {
             let itemsList = getFromSession()
-            for(item of itemsList){
+            let itemsId = []
+            for(item of itemsList) {
+                itemsId.push(item.id)
+            }
+
+            let qtdIds = itemsId.reduce((acc, curr) => {
+                return acc[curr] ? ++acc[curr] : acc[curr] = 1, acc
+            }, {})
+
+            let arrQtdIds = Object.keys(qtdIds)
+
+            let custoTotalFinal = 0
+
+            for(item in itemsList){
+                let custo = String(itemsList[item].custo)
+                    .replace('.', '')
+                    .replace(',', '.')
+                    .replace('R$', '')
+                    .trim()
+                custoTotalFinal = custoTotalFinal + Number(custo)
                 itemsSection.firstElementChild.appendChild(
                     createItem(
-                        item.id, 
-                        item.imagem, 
-                        item.selecao, 
-                        item.descricao, 
-                        item.custo
+                        itemsList[item].id, 
+                        itemsList[item].imagem, 
+                        itemsList[item].selecao, 
+                        itemsList[item].descricao, 
+                        itemsList[item].custo
                     )
                 )
             }
+            if(!String(custoTotalFinal).includes('.')) custoTotalFinal = String(custoTotalFinal) + ',00'
+            custoTotal.innerHTML = String(custoTotalFinal)
+                .replace('.', ',')
+
         }else{
-            itemsSection.innerHTML = `
+            itemsClientData.innerHTML = `
                 <div class='semItens'>
                     <h1>VOCÊ NÃO POSSUE ITENS NO CARRINHO</h1>
                 </div>
             ` 
         }
+        let bntLimparCarrinhoPedido = document.querySelector('.bntLimparCarrinhoPedido')
+        let bntFinalizarPedido = document.querySelector('.bntFinalizarPedido')
+        let bntRemoverCartList = document.querySelector('.bntRemoverCartList')
+        bntLimparCarrinhoPedido.addEventListener('click', () => {
+            if(JSON.parse(sessionStorage.getItem('itemsList'))){
+                sessionStorage.removeItem('itemsList')
+                location.reload()
+                return
+            }
+            alert('Seu carrinho já está vazio!')
+        })
+        bntFinalizarPedido.addEventListener('click', () => {
+            if(JSON.parse(sessionStorage.getItem('itemsList'))){
+                let custoTotal = document.querySelector('.custoTotal').innerHTML
+                let bagQtd = document.querySelector('.bagQtd').innerHTML
+                sendOrder(getFromSession(), {
+                    //clientData
+                    name: 'Lestter'
+                },
+                {
+                    //misc
+                    custoTotal: String(custoTotal),
+                    qtdTotal: `${String(bagQtd)}`,
+                    data: getDate(),
+                    hora: getHora()
+                })
+                return
+            }
+            alert('Você não possue itens no carrinho')
+        })
     </script>
 </body>
 </html> 
