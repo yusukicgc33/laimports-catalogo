@@ -59,7 +59,15 @@
                 </thead>
                 <tbody class="tbody"></tbody>
             </table>
-            <section class="client-data"></section>
+            <section class="client-data">
+                <h2>Informe seus Dados de Entrega</h2>
+                <form action="" class="formClient">
+                    <input required type="text" name="nomeC" id="nomeC" placeholder="Nome Sobrenome">
+                    <input type="tel" name="telC" id="telC" placeholder="81 9 9999 9999">
+                    <input type="email" name="emailC" id="emailC" placeholder="email@email.com">
+                    <input required type="text" name="endC" id="endC" placeholder="Rua, numero - Bairro, Estado - CEP - Completmento">
+                </form>
+            </section>
         </div>
         <section class="purch-info">
             <div class="purchBag">
@@ -94,7 +102,6 @@
 
             return `${dDia}/${dMes}/${dAnoC}`
         }
-        console.log(getDate());
         function getHora(){
             let hour = new Date()
             let hora = hour.getHours()
@@ -103,11 +110,11 @@
 
             return `${hora}:${min}:${sec}`
         }
-        console.log(getHora());
 
         let custoTotal = document.querySelector('.custoTotal')
         let itemsSection = document.querySelector('.items')    
-        let itemsClientData = document.querySelector('.itemsClientData')    
+        let itemsClientData = document.querySelector('.itemsClientData')
+
         if(!getFromSession().length < 1) {
             let itemsList = getFromSession()
             let itemsId = []
@@ -154,6 +161,12 @@
         let bntLimparCarrinhoPedido = document.querySelector('.bntLimparCarrinhoPedido')
         let bntFinalizarPedido = document.querySelector('.bntFinalizarPedido')
         let bntRemoverCartList = document.querySelector('.bntRemoverCartList')
+        
+        let nomeC = document.querySelector('#nomeC')
+        let telC = document.querySelector('#telC')
+        let emailC = document.querySelector('#emailC')
+        let endC = document.querySelector('#endC')
+
         bntLimparCarrinhoPedido.addEventListener('click', () => {
             if(JSON.parse(sessionStorage.getItem('itemsList'))){
                 sessionStorage.removeItem('itemsList')
@@ -162,13 +175,28 @@
             }
             alert('Seu carrinho já está vazio!')
         })
-        bntFinalizarPedido.addEventListener('click', () => {
+        bntFinalizarPedido.addEventListener('click', (e) => {
+            try {
+                if(nomeC.value === '' ||
+                   endC.value === '' 
+                ){
+                    alert('NOME(1º) e ENDEREÇO(4º) devem ser preenchidos')
+                    e.preventDefault()
+                    return
+                }
+            } catch (error) {
+                alert('Preencha seus dados após adicionar produtos')
+            }
+            
             if(JSON.parse(sessionStorage.getItem('itemsList'))){
                 let custoTotal = document.querySelector('.custoTotal').innerHTML
                 let bagQtd = document.querySelector('.bagQtd').innerHTML
                 sendOrder(getFromSession(), {
                     //clientData
-                    name: 'Lestter'
+                    name: nomeC.value,
+                    tel: telC.value,
+                    email: emailC.value,
+                    endereco: endC.value,
                 },
                 {
                     //misc

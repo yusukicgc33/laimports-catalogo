@@ -107,6 +107,26 @@
     background-color: red;
 }
 
+.client-data{
+    margin-top: 60px;
+    text-align: center;
+}
+.client-data .formClient{
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 0.5rem;
+}
+.client-data input{
+    border-radius: 10px;
+    margin: 10px;
+    display: block;
+    width: 80%;
+    height: 35px;
+    outline: 0;
+    box-shadow: 0;
+}
+
 /** MEDIA QUERIES
 **/
 @media screen and (max-width: 640px) {

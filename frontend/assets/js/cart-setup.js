@@ -42,9 +42,14 @@ const deleteFromSession = (chave, valor) => {
 }
 
 const sendOrder = (itemsList, clientData, misc) => {
+    if(clientData.name === '') clientData.name = 'Não informado'
+    if(clientData.tel === '') clientData.tel = 'Não informado'
+    if(clientData.email === '') clientData.email = 'Não informado'
+    if(clientData.endereco === '') clientData.endereco = 'Não informado'
+
     const telOwner = String('5581994911766') //55819...
     if(!clientData.name) clientData.name = 'Cliente'
-    let msg = ` *NOVO PEDIDO* \n\nOlá! Sou *${clientData.name}* \nSegue meu pedido: \n\n`
+    let msg = ` *NOVO PEDIDO* - ${String(misc.data+misc.hora).replace('/', '').replace(':', '').replace('/', '').replace(':', '').trim()} \n\nOlá! Sou *${clientData.name}* \nSegue meu pedido: \n\n`
 
     for (item of itemsList){
         msg = msg + `*ID:* *${item.id}* \n`
@@ -53,7 +58,11 @@ const sendOrder = (itemsList, clientData, misc) => {
         msg = msg + `*CUSTO:* *${item.custo}* \n\n`
     }
 
-    msg = msg + `\n_*Resumo*_\n\n`
+    msg = msg + `*Nome:* ${clientData.name}\n`
+    msg = msg + `*Telefone:* ${clientData.tel}\n`
+    msg = msg + `*E-mail:* ${clientData.email}\n`
+    msg = msg + `*Endereço:* ${clientData.endereco}\n\n`
+
     msg = msg + `_*Total:*_ R$ ${misc.custoTotal}\n`
     msg = msg + `_*Qtd:*_ ${misc.qtdTotal} unidade(s)\n\n`
 
