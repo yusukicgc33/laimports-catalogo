@@ -97,7 +97,7 @@
         function getDate(){
             let date = new Date()
             let dDia = date.getDate()
-            let dMes = date.getMonth()
+            let dMes = Number(date.getMonth()) + 1
             let dAnoC = date.getFullYear()
 
             return `${dDia}/${dMes}/${dAnoC}`
