@@ -123,7 +123,7 @@ const generateCardsBySection = (data) => {
 const getCards = async (filter = '') => {
     if (filter) filter = '&filter=' + filter //Já existem um ?limit=99999
 
-    const data = await fetch(urlProd + `${filter}`, { //MUDAR urlDev PARA urlProd QUANDO FIZER O PUSH
+    const data = await fetch(urlDev + `${filter}`, { //MUDAR urlDev PARA urlProd QUANDO FIZER O PUSH
         method: 'GET',
     })
         .then(res => { return res.json() })
