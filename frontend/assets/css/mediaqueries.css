@@ -1,15 +1,72 @@
 @media screen and (max-width: 640px) {
+    .bntNavMobile{
+        display: block;
+    }
     header nav .nav-search{
         flex-direction: row;
     }
     header nav .nav-search .search-bar{
         margin: 0 auto;
         padding: 10px 0;
-        width: 90%;
+        width: 70%;
     }
     header nav .nav-search section[class='logo-sec'],
-    header nav .nav-search .client-cart,
-    header nav .nav-menu{
+    header nav .nav-search .client-cart{
         display: none;
     }
+    header nav .nav-menu{
+        display: none;
+        width: 250px;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        height: 450px;
+        z-index: 99;
+    }
+    header nav .nav-menu .menu ul{
+        flex-direction: column;
+        margin-left: 30px;
+        margin-top: 100px;
+    }
+    header nav .nav-search .client-cart{
+        display: none;
+        position: absolute;
+        right: 180px;
+        top: 15px;
+        background-color: yellow;
+        width: auto;
+        z-index: 100;
+    }
+}
+
+@media screen and (max-width: 420px){
+/* cards INÍCIO
+*/
+    .cards{
+        max-width: var(--max-width-1);
+    }
+    .card {
+        width: 85vw;
+        min-width: 250px;
+    }
+    .card .camisa {
+        width: var(--card-inner-width-3);
+        min-width: 250px;
+        text-align: center;
+    }
+    .card .info{
+        width: var(--card-inner-width-3);
+        min-width: 250px;
+        margin: 0 auto;
+    }
+    .card .info > .titulo{}
+    .card .info > .desc{}
+    .card .info > .custo{}
+    .card .info button[class='add']{
+        height: 30px;
+        width: 100%;
+        max-width: 250px;
+        font-size: 0.75rem;
+    }
+
 }

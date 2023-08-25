@@ -15,7 +15,7 @@ a{
 }
 
 body{
-    font-size: 1.25em;
+    font-size: 1.25rem;
 }
 
 header{
@@ -52,7 +52,7 @@ header nav .nav-search #search{
 header nav .nav-search #search,
 header nav .nav-search #search::placeholder{
     color: var(--color-3_1);
-    font-size: 1.1em;
+    font-size: 1.1rem;
     font-weight: 100;
     text-indent: 20px;
 }
@@ -69,7 +69,7 @@ header nav .nav-search #search:focus{
     margin: 0 auto;
 }
 header nav .nav-search .search-magnifier{
-    z-index: 100;
+    z-index: 95;
     position: absolute;
     right: 20px;
     top: 5px;
@@ -90,6 +90,17 @@ header nav .nav-search .client-cart .icons{
 
 /*  nav-menu INICIO
 */
+.bntNavMobile{
+    display: none;
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    z-index: 100;
+    cursor: pointer;
+}
 header nav .nav-menu{
     background-color: var(--color-2);
     width: 100vw;
@@ -138,7 +149,7 @@ header nav .nav-menu .menu a{
 }
 .main-cards h2{
     margin: 30px auto;
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 /* main-cards FIM
 */
@@ -172,20 +183,20 @@ header nav .nav-menu .menu a{
     margin: 0 auto;
 }
 .card .info > .titulo{
-    font-size: 1.125em;
+    font-size: 1.125rem;
     font-weight: 600;
 }
 .card .info > .titulo a{
     text-decoration: underline;
 }
 .card .info > .desc{
-    font-size: 0.875em;
+    font-size: 0.875rem;
     font-weight: 100;
 }
 .card .info > .custo{
     margin: 7px 0;
     text-align: center;
-    font-size: 1.5625em;
+    font-size: 1.5625rem;
 }
 .card .info button[class='add']{
     background-color: var(--color-3);
@@ -193,7 +204,7 @@ header nav .nav-menu .menu a{
     height: 20px;
     margin: 0px auto;
     border: none;
-    font-size: 0.75em;
+    font-size: 0.75rem;
     cursor: pointer;
 }
 
@@ -202,7 +213,7 @@ header nav .nav-menu .menu a{
 .best-sellers .title{
     text-align: center;
     margin: 20px;
-    font-size: 1.4em;
+    font-size: 1.4rem;
 }
 .best-sellers .cards{
     justify-content: center;
@@ -223,18 +234,18 @@ header nav .nav-menu .menu a{
     width: var(--card-inner-width-2);
 }
 .best-sellers .card .info > .titulo{
-    font-size: 1.5em;
+    font-size: 1.5rem;
 }
 .best-sellers .card .info > .desc{
-    font-size: 1em;
+    font-size: 1rem;
 }
 .best-sellers .card .info > .custo{
-    font-size: 2em;
+    font-size: 2rem;
 }
 .best-sellers .card .info button[class='add']{
     width: var(--card-inner-width-2);
     height: 30px;
-    font-size: 1em;
+    font-size: 1rem;
 }
 /* cards-best-sellers FIM
 */
