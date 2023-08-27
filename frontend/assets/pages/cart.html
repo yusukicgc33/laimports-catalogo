@@ -21,7 +21,7 @@
                 <section class="search-bar">
                     <section class="search-container">
                         <img class="search-magnifier" src="./../../public/img/search-magnifier.png" alt="search-magnifier">
-                        <input id="search" type="text" placeholder="Pesquisar Produto...">
+                        <input autofocus class="search" id="search" type="text" placeholder="Pesquisar Produto...">
                     </section>
                 </section>
                 <section class="client-cart">
@@ -46,7 +46,7 @@
             </section>
         </nav>
     </header>
-    <main class="items-content">
+    <main class="items-content searching">
         <div class="itemsClientData">
             <table class="items">
                 <thead>
@@ -81,6 +81,7 @@
         </section>
     </main>
     <script src="../../assets/js/script.js"></script>
+    <script src="../../API/cards.js"></script>
     <script>
         const setCartQtd = () => {
             if(JSON.parse(sessionStorage.getItem('itemsList'))){
@@ -208,6 +209,62 @@
                 return
             }
             alert('Você não possue itens no carrinho')
+        })
+    </script>
+    <script>
+        const searchMagnifier = document.querySelector('.search-magnifier');
+        const search = document.querySelector('.search')
+        const searching = document.querySelector('.searching')
+
+        const startSearch = (data) => {
+            searching.style.display = 'flex'
+            searching.style.flexAlign = 'center'
+            searching.style.justfyContent = 'center'
+            searching.style.flexWrap = 'wrap'
+
+            searching.innerHTML = ''
+            for (result of data.result){
+                let resLiga = String(result.liga)
+                let
+                    id = result.id,
+                    imgPath = result.imagem //result.imagem,
+                    tituloLinkHref = '#',
+                    tituloLinkText = result.selecao,
+                    descText = result.descricao,
+                    custoText = result.custo
+                    searching.appendChild(createCard(
+                        id,
+                        imgPath,
+                        tituloLinkHref,
+                        tituloLinkText,
+                        descText,
+                        custoText,
+                        resLiga
+                    ))
+            }
+        }
+
+        searchMagnifier.addEventListener('click', () => {
+            if(search.value === '') {
+                    alert('Digite algo para pesquisar')
+                    return
+                }
+                getCards(search.value, true)
+        })
+        search.addEventListener('keyup', (e) => {
+            if(e.key === 'Enter' || e.key === 'NumpadEnter'){
+                if(search.value === '') {
+                    alert('Digite algo para pesquisar')
+                    return
+                }
+                getCards(search.value, true)
+            }
+        })
+        search.addEventListener('keyup', (e) => {
+            if(search.value === '') {
+                return window.location.reload()
+            }
+            getCards(search.value, true)
         })
     </script>
 </body>

@@ -140,9 +140,14 @@ header nav .nav-menu .menu a{
 */
 
 
+main{
+    min-height: 90vh;
+}
+
 
 /* main-cards INÍCIO
 */
+.searching,
 .main-cards{
     max-width: var(--max-width-1);
     margin: 0 auto;

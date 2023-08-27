@@ -54,13 +54,13 @@ const createCard = (
     bnt.innerText = 'ADICIONAR'
     bnt.addEventListener('click', (e) => {
         saveToSession(
-            id, 
+            id,
             resLiga,
             tituloLinkText,
             descText,
             custoText,
             imgPath
-            )
+        )
         setCartQtd()
     })
     info.appendChild(bnt)
@@ -120,14 +120,19 @@ const generateCardsBySection = (data) => {
     }
 }
 
-const getCards = async (filter = '') => {
+const getCards = async (filter = '', searching = false) => {
     if (filter) filter = '&filter=' + filter //Já existem um ?limit=99999
 
     const data = await fetch(urlProd + `${filter}`, { //MUDAR urlDev PARA urlProd QUANDO FIZER O PUSH
         method: 'GET',
     })
         .then(res => { return res.json() })
-        .then(res => generateCardsBySection(res))
+        .then(res => {
+            if (searching === false) {
+                return generateCardsBySection(res)
+            }
+            return startSearch(res)
+        })
 }
 
 getCards()

@@ -21,8 +21,8 @@
                 <section class="search-bar">
                     <section class="search-container">
                         <img class="search-magnifier" src="./public/img/search-magnifier.png" alt="search-magnifier">
-                        <input id="search" type="text" placeholder="Pesquisar Produto...">
-                    </section>
+                        <input autofocus class="search" id="search" type="text" placeholder="Pesquisar Produto...">
+                    </section> 
                 </section>
                 <section class="client-cart">
                     <section class="icons">
@@ -49,7 +49,7 @@
             <img class="main-banner" src="./public/img/main-banner.jpg" alt="main-banner">
         </section>
     </header>
-    <main class="main-cards">
+    <main class="main-cards searching">
         
         <section id="camp-brasil">
             <h2>CAMPEONATO BRASILEIRO</h2>
@@ -99,5 +99,63 @@
         }
         setCartQtd()
     </script>
+    <script>
+        const searchMagnifier = document.querySelector('.search-magnifier');
+        const search = document.querySelector('.search')
+        const searching = document.querySelector('.searching')
+
+        const startSearch = (data) => {
+            searching.style.display = 'flex'
+            searching.style.flexAlign = 'center'
+            searching.style.justfyContent = 'center'
+            searching.style.flexWrap = 'wrap'
+
+            searching.innerHTML = ''
+            for (result of data.result){
+                let resLiga = String(result.liga)
+                let
+                    id = result.id,
+                    imgPath = result.imagem //result.imagem,
+                    tituloLinkHref = '#',
+                    tituloLinkText = result.selecao,
+                    descText = result.descricao,
+                    custoText = result.custo
+                    searching.appendChild(createCard(
+                        id,
+                        imgPath,
+                        tituloLinkHref,
+                        tituloLinkText,
+                        descText,
+                        custoText,
+                        resLiga
+                    ))
+            }
+        }
+
+        searchMagnifier.addEventListener('click', () => {
+            if(search.value === '') {
+                    alert('Digite algo para pesquisar')
+                    return
+                }
+                getCards(search.value, true)
+        })
+        search.addEventListener('keyup', (e) => {
+            if(e.key === 'Enter' || e.key === 'NumpadEnter'){
+                if(search.value === '') {
+                    alert('Digite algo para pesquisar')
+                    return
+                }
+                getCards(search.value, true)
+            }
+        })
+        search.addEventListener('keyup', (e) => {
+            if(search.value === '') {
+                return window.location.reload()
+            }
+            getCards(search.value, true)
+        })
+    </script>
 </body>
 </html> 
+
+

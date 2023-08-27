@@ -13,8 +13,4 @@ function changeDisplay(element) {
 }
 document.addEventListener('click', (e) => {
     if (e.target.className === 'bntNavMobile') changeDisplay(navMenu)
-    if (e.target.className !== 'bntNavMobile') {
-        dCount = 1
-        changeDisplay(navMenu)
-    }
 })
