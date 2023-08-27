@@ -3,6 +3,7 @@ import { server } from './server/server';
 
 const urlProd = 'https://api-laimports-catalogo.onrender.com/camisa/1'
 const urlDev = 'http://localhost:5555/camisa/1'
+let kia = 1
 
 const port = process.env.PORT || 3333;
 
@@ -11,9 +12,11 @@ const startServer = () => {
         console.log(`[# Server] Servidor Online`);
     });
     const keepItAlive = setInterval(() => {
-        console.log('[# Keep It Alive] Chamando API...'); 
-        fetch(`${urlProd}`, {method: 'GET'}).then(res => {return res.json()})
-    }, 15000)
+        // console.log('[# Keep It Alive] Chamando API...'); 
+        // fetch(`${urlProd}`, {method: 'GET'}).then(res => {return res.json()})
+        console.log(String(kia) + ' - Keeping It Alive...')
+        kia++
+    }, 5000)
 }
 
 if(process.env.ENVIROMENT === 'production' && process.env.IS_LOCAL_HOST !== 'true'){    
