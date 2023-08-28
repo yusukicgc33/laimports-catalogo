@@ -53,7 +53,7 @@
         <div class="circle-1"></div>
         <div class="circle-2"></div>
         <div class="circle-3"></div>
-    </div>
+    </div> 
     <main class="main-cards searching">
 
         <section id="camp-brasil">
@@ -103,19 +103,25 @@
         </div>
     </section>
     <script class="loading-setup">
-        let loading = document.querySelector('.loading')
-        let iLoading = 0
-        setInterval(() => {
-            if (iLoading === loading.children.length) {
-                for(let i = 0; i < loading.children.length; i++){
-                    loading.children[i].style.backgroundColor = '#5c5c5c'
+        let loading = document.querySelectorAll('.loading')
+        let iLoading = { //ADICIONAR NA ORDEM CASO HAVER + LOADING NUMA MESMA PÁGINA
+            0: 0,
+            1: 0,
+            2: 0
+        }
+        for(let y = 0; y < loading.length; y++){
+            setInterval(() => {
+                if (iLoading[y] === loading[y].children.length) {
+                    for(let i = 0; i < loading[y].children.length; i++){
+                        loading[y].children[i].style.backgroundColor = '#5c5c5c'
+                    }
+                    iLoading[y] = 0
+                    return
                 }
-                iLoading = 0
-                return
-            }
-            loading.children[iLoading].style.backgroundColor = '#9b9b9b'
-            iLoading++
-        }, 150)
+                loading[y].children[iLoading[y]].style.backgroundColor = '#9b9b9b'
+                iLoading[y]++
+            }, 150)
+        }
     </script>
     <script src="./API/cards.js"></script>
     <script src="./assets/js/script.js"></script>
