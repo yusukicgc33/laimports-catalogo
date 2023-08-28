@@ -46,6 +46,11 @@
             </section>
         </nav>
     </header>
+    <div class="loading lSearching">
+        <div class="circle-1"></div>
+        <div class="circle-2"></div>
+        <div class="circle-3"></div>
+    </div>
     <main class="items-content searching">
         <div class="itemsClientData">
             <table class="items">
@@ -217,6 +222,9 @@
         const searching = document.querySelector('.searching')
 
         const startSearch = (data) => {
+            let lSearching = document.querySelector('.lSearching')
+            lSearching.style.display = 'none'
+
             searching.style.display = 'flex'
             searching.style.flexAlign = 'center'
             searching.style.justfyContent = 'center'
@@ -261,11 +269,28 @@
             }
         })
         search.addEventListener('keyup', (e) => {
+            let lSearching = document.querySelector('.lSearching')
+            lSearching.style.display = 'flex'
             if(search.value === '') {
                 return window.location.reload()
             }
             getCards(search.value, true)
         })
+    </script>
+    <script class="loading-setup">
+        let loading = document.querySelector('.loading')
+        let iLoading = 0
+        setInterval(() => {
+            if (iLoading === loading.children.length) {
+                for(let i = 0; i < loading.children.length; i++){
+                    loading.children[i].style.backgroundColor = '#5c5c5c'
+                }
+                iLoading = 0
+                return
+            }
+            loading.children[iLoading].style.backgroundColor = '#9b9b9b'
+            iLoading++
+        }, 150)
     </script>
 </body>
 </html> 

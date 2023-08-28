@@ -256,3 +256,25 @@ main{
 */
 /* cards FIM
 */
+
+
+.loading{
+    margin-left: 32px;
+    width: 52px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.loading .circle-1,
+.loading .circle-2,
+.loading .circle-3,
+.loading .circle-4 {
+    background-color: #5c5c5c;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+.lSearching{
+    display: none;
+}
